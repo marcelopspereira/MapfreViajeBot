@@ -8,16 +8,16 @@ using Microsoft.Bot.Connector;
 using Microsoft.Bot.Builder.FormFlow;
 using ViajeBotAPI.FormFlows;
 using ViajeBotAPI.Util;
+using ViajeBotAPI.Model;
 
 namespace ViajeBotAPI.Dialogs
 {
+    [Serializable]
     public class MedicalDialog : IDialog<object>
     {
         public async Task StartAsync(IDialogContext context)
         {
             await context.PostAsync("OK, Fique tranquilo! Vamos te ajudar!");
-
-            var especialidade = context.ConversationData.Get<string>("Especialidade");
 
             var placeFormDialog = FormDialog.FromForm(this.BuildInitialForm, FormOptions.PromptInStart);
             context.Call(placeFormDialog, this.ResumeAfterPlaceFormDialog);
@@ -36,12 +36,23 @@ namespace ViajeBotAPI.Dialogs
             try
             {
                 var place = await result;
+                var especialidade = context.ConversationData.Get<string>("Especialidade");
 
-                await context.PostAsync("Procurando um hospital próximo a você.");
+                await context.PostAsync($"Procurando um Hospital {especialidade} próximo a você...");
 
-                //Search user in database:
-                var hospitalData = DatabaseUtil.GetHospitalData(place);
-                if (hospitalData != null)
+                Hospital hospitalData;
+                try
+                {
+                    hospitalData = DatabaseUtil.GetHospitalData(place, especialidade);
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+
+                if (hospitalData == null)
                 {
                     resultado = false;
                     await context.PostAsync("Infelizmente não encontramos seu registro. Tente novamente!");
@@ -52,7 +63,7 @@ namespace ViajeBotAPI.Dialogs
                     //Save it on the context:
                     var name = context.UserData.Get<string>("Name");
 
-                    await context.PostAsync($"Olá {name}, em que posso te ajudar?");
+                    await context.PostAsync($"{name}, por favor direcione-se para o Hospital {hospitalData.Name} no endereço {hospitalData.Address}!");
                 }
             }
             catch (Exception ex)

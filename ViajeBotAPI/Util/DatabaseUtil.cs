@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using ViajeBotAPI.FormFlows;
+using ViajeBotAPI.Model;
 
 namespace ViajeBotAPI.Util
 {
@@ -28,6 +29,26 @@ namespace ViajeBotAPI.Util
             catch
             {
                 return string.Empty;
+            }
+        }
+
+        internal static Hospital GetHospitalData(PlaceInfo parameters, string especialidade)
+        {
+            var commandText = "SELECT Hospital, Endereco FROM tblEspecialidades WHERE Pais=@Pais AND Cidade=@Cidade AND Especialidade=@Especialidade";
+            var commmandSql = new SqlCommand(commandText);
+
+            commmandSql.Parameters.AddWithValue("@Pais", parameters.Country.ToUpper());
+            commmandSql.Parameters.AddWithValue("@Cidade", parameters.City.ToUpper());
+            commmandSql.Parameters.AddWithValue("@Especialidade", especialidade.ToUpper());
+
+            try
+            {
+                var hospital = ExecuteHospitalSQLQuery(commmandSql);
+                return hospital;
+            }
+            catch
+            {
+                return null;
             }
         }
 
@@ -58,9 +79,35 @@ namespace ViajeBotAPI.Util
             return null;
         }
 
-        internal static object GetHospitalData(PlaceInfo place)
+        private static Hospital ExecuteHospitalSQLQuery(SqlCommand command)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    command.Connection = connection;
+                    connection.Open();
+                    var reader = command.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        if (!string.IsNullOrEmpty(reader[0].ToString()))
+                            return new Hospital()
+                            {
+                                Name = reader["Hospital"].ToString(),
+                                Address = reader["Endereco"].ToString()
+                            };
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return null;
         }
     }
 }

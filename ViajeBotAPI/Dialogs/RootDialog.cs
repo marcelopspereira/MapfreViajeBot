@@ -14,7 +14,7 @@ namespace ViajeBotAPI.Dialogs
     {
         public async Task StartAsync(IDialogContext context)
         {
-            await context.PostAsync("Bem vindo ao Sistema Inteligente de Sinistros da MAPFRE!");
+            await context.PostAsync("Bem vindo ao Sistema Inteligente de Seguro de Viagem da MAPFRE!");
             context.Wait(this.MessageReceivedAsync);
         }
 
@@ -32,7 +32,9 @@ namespace ViajeBotAPI.Dialogs
 
                 if (success)
                 {
-                    context.Wait(MessageFromIntentionAsync);
+                    //context.Wait(MessageFromIntentionAsync);
+                    context.Call(new IntentionsDialog(), ResumeAfterIntentionsDialog);
+
                 }
                 else
                 {

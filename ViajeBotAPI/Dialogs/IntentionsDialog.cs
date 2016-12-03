@@ -28,6 +28,7 @@ namespace ViajeBotAPI.Dialogs
         //    //context.Wait(this.MessageReceivedAsync);
         //}
 
+
         [LuisIntent("")]
         [LuisIntent("None")]
         public async Task None(IDialogContext context, LuisResult result)
@@ -37,17 +38,37 @@ namespace ViajeBotAPI.Dialogs
         }
 
         [LuisIntent(_intentMedicoOrtopedico)]
-        public void ReplyMedicoOrtopedico(IDialogContext context, LuisResult result)
+        public async Task ReplyMedicoOrtopedico(IDialogContext context, LuisResult result)
         {
-            context.ConversationData.SetValue("Especialidade", "Ortopedia");
+            context.ConversationData.SetValue("Especialidade", "Ortopedista");
             context.Call(new MedicalDialog(), ResumeAfterMedicalDialog);
         }
 
 
+        [LuisIntent(_intentMedicoGeral)]
+        public async Task ReplyMedicoGeral(IDialogContext context, LuisResult result)
+        {
+            context.ConversationData.SetValue("Especialidade", "Geral");
+            context.Call(new MedicalDialog(), ResumeAfterMedicalDialog);
+        }
+
+        [LuisIntent(_intentMedicoProntoSocorro)]
+        public async Task ReplyMedicoProntoSocorro(IDialogContext context, LuisResult result)
+        {
+            context.ConversationData.SetValue("Especialidade", "Pronto Socorro");
+            context.Call(new MedicalDialog(), ResumeAfterMedicalDialog);
+        }
+
         private async Task ResumeAfterMedicalDialog(IDialogContext context, IAwaitable<object> result)
         {
-            var message = "Já acionei o hospital e eles sabem que você deve chegar em breve!";
-            await SendOrdinaryMessage(context, message);
+            var res = (bool) await result;
+
+            string message;
+            if (res)
+            {
+                message = "Já acionei o hospital e eles sabem que você deve chegar em breve!";
+                await SendOrdinaryMessage(context, message);
+            }
         }
 
         private async Task SendOrdinaryMessage(IDialogContext context, string message)
