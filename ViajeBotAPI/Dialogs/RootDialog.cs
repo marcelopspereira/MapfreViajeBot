@@ -32,11 +32,11 @@ namespace ViajeBotAPI.Dialogs
 
                 if (success)
                 {
-                    context.Call(new IntentionsDialog(), ResumeAfterIntentionsDialog);
+                    context.Wait(MessageFromIntentionAsync);
                 }
                 else
                 {
-                    context.Wait(this.MessageReceivedAsync);
+                    context.Call(new InitialDialog(), ResumeAfterInitialDialog);
                 }
             }
             catch (Exception ex)
@@ -44,6 +44,13 @@ namespace ViajeBotAPI.Dialogs
                 await context.PostAsync($"Um erro ocorreu... Reiniciando o atendimento.");
                 context.Wait(this.MessageReceivedAsync);
             }
+        }
+
+        public virtual async Task MessageFromIntentionAsync(IDialogContext context, IAwaitable<IMessageActivity> result)
+        {
+            var message = await result;
+            context.Call(new IntentionsDialog(), ResumeAfterIntentionsDialog);
+            //context.Call(new InitialDialog(), ResumeAfterInitialDialog);
         }
 
         private async Task ResumeAfterIntentionsDialog(IDialogContext context, IAwaitable<object> result)

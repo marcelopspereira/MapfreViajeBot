@@ -37,6 +37,7 @@ namespace ViajeBotAPI.Dialogs
                 if (string.IsNullOrEmpty(name))
                 {
                     resultado = false;
+                    await context.PostAsync("Infelizmente não encontramos seu registro. Tente novamente!");
                 }
                 else
                 {
@@ -47,8 +48,6 @@ namespace ViajeBotAPI.Dialogs
                     context.UserData.SetValue("Name", name);
                     await context.PostAsync($"Olá {name}, em que posso te ajudar?");
                 }
-
-                resultado = true;
             }
             catch (Exception ex)
             {

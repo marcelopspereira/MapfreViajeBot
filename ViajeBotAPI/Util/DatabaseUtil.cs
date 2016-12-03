@@ -57,5 +57,10 @@ namespace ViajeBotAPI.Util
             }
             return null;
         }
+
+        internal static object GetHospitalData(PlaceInfo place)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -122,13 +122,16 @@
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Dialogs\InitialDialog.cs" />
     <Compile Include="Dialogs\IntentionsDialog.cs" />
+    <Compile Include="Dialogs\MedicalDialog.cs" />
     <Compile Include="Dialogs\RootDialog.cs" />
     <Compile Include="FormFlows\InitialInfo.cs" />
+    <Compile Include="FormFlows\PlaceInfo.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Handlers\MessageHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\ConversationResources.cs" />
     <Compile Include="Util\DatabaseUtil.cs" />
   </ItemGroup>
   <ItemGroup>

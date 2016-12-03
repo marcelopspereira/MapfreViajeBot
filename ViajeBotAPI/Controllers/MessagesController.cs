@@ -32,7 +32,11 @@ namespace ViajeBotAPI
 
                 try
                 {
-                    await Conversation.SendAsync(activity, () => new RootDialog());
+                    //await Conversation.SendAsync(activity, () => new RootDialog());
+
+
+                    await Conversation.SendAsync(activity, () => new IntentionsDialog());
+
                     response = Request.CreateResponse(HttpStatusCode.OK);
                 }
                 catch (Exception ex)
