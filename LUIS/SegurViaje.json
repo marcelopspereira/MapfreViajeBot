@@ -1,0 +1,271 @@
+{
+  "luis_schema_version": "1.3.0",
+  "name": "SegurViaje",
+  "desc": "",
+  "culture": "pt-br",
+  "intents": [
+    {
+      "name": "CancelamentoVoo"
+    },
+    {
+      "name": "MedicoGeral"
+    },
+    {
+      "name": "MedicoOrtopedico"
+    },
+    {
+      "name": "MedicoProntoSocorro"
+    },
+    {
+      "name": "None"
+    }
+  ],
+  "entities": [],
+  "composites": [],
+  "bing_entities": [],
+  "actions": [],
+  "model_features": [],
+  "regex_features": [],
+  "utterances": [
+    {
+      "text": "quebrei meu braço",
+      "intent": "MedicoOrtopedico",
+      "entities": []
+    },
+    {
+      "text": "machuquei meu braço",
+      "intent": "MedicoOrtopedico",
+      "entities": []
+    },
+    {
+      "text": "cortei meu braço",
+      "intent": "MedicoOrtopedico",
+      "entities": []
+    },
+    {
+      "text": "acho que quebrei meu braço",
+      "intent": "MedicoOrtopedico",
+      "entities": []
+    },
+    {
+      "text": "cai e destronquei meu braço",
+      "intent": "MedicoOrtopedico",
+      "entities": []
+    },
+    {
+      "text": "quebrei meu pé",
+      "intent": "MedicoOrtopedico",
+      "entities": []
+    },
+    {
+      "text": "machuquei meu pé",
+      "intent": "MedicoOrtopedico",
+      "entities": []
+    },
+    {
+      "text": "cortei meu pé",
+      "intent": "MedicoOrtopedico",
+      "entities": []
+    },
+    {
+      "text": "acho que quebrei meu pé",
+      "intent": "MedicoOrtopedico",
+      "entities": []
+    },
+    {
+      "text": "acho que quebrei meu pé ou tornozelo",
+      "intent": "MedicoOrtopedico",
+      "entities": []
+    },
+    {
+      "text": "estou com febre",
+      "intent": "MedicoGeral",
+      "entities": []
+    },
+    {
+      "text": "estou gripado",
+      "intent": "MedicoGeral",
+      "entities": []
+    },
+    {
+      "text": "estou com gripe",
+      "intent": "MedicoGeral",
+      "entities": []
+    },
+    {
+      "text": "fiquei gripado",
+      "intent": "MedicoGeral",
+      "entities": []
+    },
+    {
+      "text": "fiquei gripado ontem",
+      "intent": "MedicoGeral",
+      "entities": []
+    },
+    {
+      "text": "acho que estou febre",
+      "intent": "MedicoGeral",
+      "entities": []
+    },
+    {
+      "text": "acho que estou com dor de estomago",
+      "intent": "MedicoGeral",
+      "entities": []
+    },
+    {
+      "text": "estou com diarreia",
+      "intent": "MedicoGeral",
+      "entities": []
+    },
+    {
+      "text": "quebrei meu pulso",
+      "intent": "MedicoOrtopedico",
+      "entities": []
+    },
+    {
+      "text": "estou com dor de barriga",
+      "intent": "MedicoGeral",
+      "entities": []
+    },
+    {
+      "text": "estou dor de barriga muito forte",
+      "intent": "MedicoGeral",
+      "entities": []
+    },
+    {
+      "text": "trinquei meu braço correndo",
+      "intent": "MedicoOrtopedico",
+      "entities": []
+    },
+    {
+      "text": "fraturei meu osso do braço",
+      "intent": "MedicoOrtopedico",
+      "entities": []
+    },
+    {
+      "text": "peguei uma gripe",
+      "intent": "MedicoGeral",
+      "entities": []
+    },
+    {
+      "text": "bati a cabeça e estou com dor",
+      "intent": "MedicoProntoSocorro",
+      "entities": []
+    },
+    {
+      "text": "bati a cabeça e está saindo sangue",
+      "intent": "MedicoProntoSocorro",
+      "entities": []
+    },
+    {
+      "text": "estou com 40 graus de febre",
+      "intent": "MedicoProntoSocorro",
+      "entities": []
+    },
+    {
+      "text": "estou com uma febre muito alta",
+      "intent": "MedicoGeral",
+      "entities": []
+    },
+    {
+      "text": "cai e cortei a testa",
+      "intent": "MedicoProntoSocorro",
+      "entities": []
+    },
+    {
+      "text": "cai e minha cabeça começou a sangrar",
+      "intent": "MedicoProntoSocorro",
+      "entities": []
+    },
+    {
+      "text": "acho que vou ter um infarto",
+      "intent": "MedicoProntoSocorro",
+      "entities": []
+    },
+    {
+      "text": "acho que vou morrer",
+      "intent": "MedicoProntoSocorro",
+      "entities": []
+    },
+    {
+      "text": "cai e está saindo muito sangue",
+      "intent": "MedicoProntoSocorro",
+      "entities": []
+    },
+    {
+      "text": "estou com uma gripe",
+      "intent": "MedicoGeral",
+      "entities": []
+    },
+    {
+      "text": "bati a cabeça",
+      "intent": "MedicoProntoSocorro",
+      "entities": []
+    },
+    {
+      "text": "cai e cortei a cabeça",
+      "intent": "MedicoProntoSocorro",
+      "entities": []
+    },
+    {
+      "text": "estou com fome",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "quero ir a praia",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "eu perdi meu voo",
+      "intent": "CancelamentoVoo",
+      "entities": []
+    },
+    {
+      "text": "eu perdi meu voo o que eu faço?",
+      "intent": "CancelamentoVoo",
+      "entities": []
+    },
+    {
+      "text": "perdi meu voo",
+      "intent": "CancelamentoVoo",
+      "entities": []
+    },
+    {
+      "text": "meu voo foi cancelado",
+      "intent": "CancelamentoVoo",
+      "entities": []
+    },
+    {
+      "text": "acabei de perder meu voo",
+      "intent": "CancelamentoVoo",
+      "entities": []
+    },
+    {
+      "text": "oi",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "olá",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "hey",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "eu quebrei minha perna",
+      "intent": "MedicoOrtopedico",
+      "entities": []
+    },
+    {
+      "text": "eu estou uma gripe",
+      "intent": "MedicoGeral",
+      "entities": []
+    }
+  ]
+}
